@@ -1,15 +1,29 @@
-#### Adaptive Context-Aware Noise Injection
+Dynamic Audio Data Augmentation
+Our preprocessing pipeline incorporates dynamic audio data augmentation to enhance the robustness and generalization of our models. This includes:
 
-Our preprocessing pipeline includes adaptive context-aware noise injection to enhance model robustness. This method dynamically adjusts noise intensity based on the amplitude of the audio signal, ensuring realistic and effective augmentation.
+Adaptive Noise Injection:
 
-- **Types of Noise**: White, pink, and environmental noise.
-- **Dynamic Adjustment**: Noise intensity is scaled based on the amplitude of the audio signal.
-- **Integration**: The noise injection process is seamlessly integrated into our existing log-Mel spectrogram calculation pipeline, adding minimal overhead.
+Types of Noise: White, Pink, and Environmental.
 
-##### Key Benefits
+Implementation: Noise is injected dynamically based on the selected profile, simulating realistic recording conditions and enhancing model robustness.
 
-- **Improved Generalization**: Models become more resilient to noise and diverse audio conditions.
-- **Low Overhead**: The augmentation process leverages the existing pipeline, ensuring efficient computation without significant additional cost.
+On-the-Fly Spectrogram Parameter Adjustment:
+
+n_fft and hop_length: Values for n_fft and hop_length are randomly selected from predefined ranges for each audio sample, providing varied spectrogram representations.
+
+Log-Mel Modulation:
+
+Our augmentation process integrates with the existing log-Mel spectrogram calculation. This means we modulate the parameters of the log-Mel spectrogram dynamically, ensuring no additional overhead is introduced while providing effective data augmentation.
+
+Efficiency and Performance
+Log-Mel Spectrogram Manipulation:
+
+Our augmentation process seamlessly integrates into the existing log-Mel spectrogram calculation, adding no extra overhead. This efficient design ensures that our preprocessing remains computationally lightweight and fast.
+
+Key Benefits
+Enhanced Robustness: By varying spectrogram parameters and injecting realistic noise, our models learn to handle a wide range of audio conditions.
+
+Low Overhead: The augmentation is integrated into the existing pipeline, ensuring minimal additional computational cost.
 
 ##### Example Usage
 
